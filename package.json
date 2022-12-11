@@ -1,0 +1,95 @@
+{
+  "name": "songs_splitter",
+  "productName": "Songs splitter",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/background/main.js",
+  "homepage": "./",
+  "dependencies": {
+    "@craco/craco": "^6.2.0",
+    "@emotion/styled": "^11.10.5",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^1.2.0",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.17",
+    "electron-is-dev": "^2.0.0",
+    "electron-store": "^8.0.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "tsc": "tsc ./src/background/*",
+    "compile": "npm run clean && npm run tsc",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "dev": "npm run compile && concurrently -k \"BROWSER=none npm run start\" \"npm run electron\"",
+    "electron": "wait-on tcp:3000 && electron .",
+    "electron-pack": "electron-builder",
+    "preelectron-pack": "npm run compile && npm run build"
+  },
+  "build": {
+    "appId": "com.electron.example-app",
+    "mac": {
+      "icon": "./public/assets/app.icns",
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "files": [
+      "**/*",
+      "./build/**/*",
+      "./public/**/*"
+    ],
+    "extraMetadata": {
+      "main": "./src/background/main.js"
+    },
+    "directories": {
+      "buildResources": "./build/**/*"
+    },
+    "extends": null
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@lingui/cli": "^3.15.0",
+    "@lingui/core": "^3.15.0",
+    "@lingui/macro": "^3.15.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.33",
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/parser": "^4.33.0",
+    "concurrently": "^6.2.1",
+    "electron": "^13.2.1",
+    "electron-builder": "^22.11.7",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "prettier": "^2.8.1",
+    "wait-on": "^6.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "locales": [
+    "es",
+    "en"
+  ],
+  "catalogs": [
+    {
+      "path": "src/renderer/locales/{locale}/messages",
+      "include": [
+        "src"
+      ],
+      "exclude": [
+        "src/renderer/locales/**"
+      ]
+    }
+  ],
+  "format": "po",
+  "sourceLocale": "en",
+  "fallbackLocales": {
+    "default": "en"
+  },
+  "extractBabelOptions": {
+    "presets": [
+      "@babel/preset-typescript"
+    ]
+  }
+}

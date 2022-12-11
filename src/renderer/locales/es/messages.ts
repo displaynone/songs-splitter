@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages={"Split files into songs":"Divide ficheros en canciones","Upload the sound files":"Sube los ficheros de sonido"};
